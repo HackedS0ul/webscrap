@@ -17,9 +17,11 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
     } 
 
+#re = requests.get('https://allegro.pl', headers=headers)
+#print(re.status_code)
+url="https://allegro.pl/kategoria/lazienka-i-toaleta-baterie-lazienkowe-46128?bmatch=e2101-d3858-c3683-hou-1-3-0429p={i}"
+soup = BeautifulSoup(url.content, 'lxml')
 
-#soup = BeautifulSoup(url.content, 'lxml')
-'''
 products = soup.find('div', class_='_9a071_1hu0a _1bo4a _xu6h2 _m7qxj _9a071_Em-aO')
 for product in products:
     product_name = soup.find('h1', class_='_1s2v1 _1djie _4lbi0')
@@ -28,7 +30,7 @@ for product in products:
     print('Product name: ', product_name.text.strip())
     print('Product Price: ', product_price.text.strip())
     print('Product Description: ', product_description.text.strip())
-'''
+
 for i in range(1,3):
     r = requests.get('https://allegro.pl/kategoria/lazienka-i-toaleta-baterie-lazienkowe-46128?bmatch=e2101-d3858-c3683-hou-1-3-0429p={i}', headers=headers)
     soup = BeautifulSoup(r.content, 'lxml')
